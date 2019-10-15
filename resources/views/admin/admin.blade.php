@@ -2,6 +2,18 @@
 
 @section('content')
 
+@if(session('sukses'))
+<div class="alert alert-success" role="alert">
+ {{session('sukses')}}
+</div>
+@endif
+
+@if(session('gagal'))
+<div class="alert alert-danger" role="alert">
+ {{session('gagal')}}
+</div>
+@endif
+
  <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
@@ -13,7 +25,7 @@
 
         <!-- DASHBOARD -->
         <li class="active treeview">
-          <a href="/admin">
+          <a href="{{ url('/admin') }}">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
@@ -21,7 +33,7 @@
 
         <!-- DAFTAR BARANG -->
         <li>
-          <a href="#">
+          <a href="/daftarbarang">
             <i class="fa fa-cubes"></i><span>Daftar Barang</span>
           </a>
         </li>
@@ -75,11 +87,12 @@
 <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Dashboard
-        <small>MAIN MENU</small>
+        <small>
+          
+        </small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Dashboard</li>
       </ol>
     </section>
@@ -104,21 +117,6 @@
           <!-- /.info-box -->
         </div>
         <!-- END PINJAM BARANG -->
-
-        <!-- KEMBALIKAN BARANG -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-red"><i class="glyphicon glyphicon-log-in"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text"><strong>KEMBALIKAN BARANG</strong></span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- END KEMBALIKAN BARANG -->
-
 
         <!-- fix for small devices only -->
         <div class="clearfix visible-sm-block"></div>
@@ -152,52 +150,67 @@
       <!-- END MAIN MENU -->
 
       <!-- DAFTAR PEMINJAM -->
-            <div class="row">
-              <div class="col-sm-12">
-                <div class="box">
-                  <div class="box-header">
-                    <h3 class="box-title">Daftar Peminjam</h3>
-                  </div> 
+            <section class="content">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="box">
+                    <div class="box-header">
+                      <h3><b>Data Peminjam</b></h3>
+                    </div>
 
-                  <div class="box-body">
-                    <table id="example1" class="table table-bordered table-striped">
-                      <thead>
-                        <tr>
-                          <th style="text-align: center;">ID Peminjaman</th>
-                          <th style="text-align:center;">Waktu Pinjam</th>
-                          <th style="text-align:center;">Nama Peminjam</th>
-                          <th style="text-align:center;">Kelas</th>
-                          <th style="text-align:center;">Jurusan</th>
-                          <th style="text-align:center;">Nama Barang</th>
-                          <th style="text-align: center;">Jenis Barang</th>
-                          <th style="text-align:center;">Kuantitas</th>
-                          <th style="text-align:center;">Ruangan</th>
-                          <th style="text-align:center;">Nama Petugas</th>
-                        </tr>
-                      </thead>
+                    <div class="box-body" style="overflow-x: auto;">
+                      <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                          <tr style="font-size: 13px; font-weight: bold;">
+                            <th style="text-align: center;" hidden="">ID Peminjaman</th>
+                            <th style="text-align:center;">Waktu Pinjam</th>
+                            <th style="text-align:center;">Nama Peminjam</th>
+                            <th style="text-align:center;">Kelas</th>
+                            <th style="text-align:center;">Jurusan</th>
+                            <th style="text-align:center;">Nama Barang</th>
+                            <th style="text-align:center;">Jenis Barang</th>
+                            <th style="text-align:center;">Kuantitas</th>
+                            <th style="text-align:center;">Ruangan</th>
+                            <th style="text-align:center;">Nama Petugas</th>
+                            <th style="text-align:center;">Status Pengembalian</th>
+                            <th style="text-align:center;">Action</th>
+                          </tr>
+                        </thead>
 
-                      <!-- <tbody>
-                        @foreach($peminjam as $pj)
+                        <tbody>
+                          @foreach($data_peminjam as $dp)
                         <tr>
-                          <td>{{$pj->id_peminjaman}}</td>
-                          <td>{{$pj->waktupeminjam}}</td>
-                          <td>{{$pj->id_user}}</td>
-                          <td>{{$pj->id_kelas}}</td>
-                          <td>{{$pj->id_jurusan}}</td>
-                          <td>{{$pj->id_inventaris}}</td>
-                          <td>{{$pj->id_jenis}}</td>
-                          <td>{{$pj->kuantitas}}</td>
-                          <td>{{$pj->id_ruangan}}</td>
-                          <td>{{$pj->id_petugas}}</td>
+                          <td style="text-align:center;" hidden="">{{$dp->id_peminjaman}}</td>
+                          <td style="text-align:center;">{{$dp->waktupinjam}}</td>
+                          <td style="text-align:center;">{{$dp->nama_user}}</td>
+                          <td style="text-align:center;">{{$dp->tingkat_kelas}}</td>
+                          <td style="text-align:center;">{{$dp->nama_jurusan}}</td>
+                          <td style="text-align:center;">{{$dp->nama_barang}}</td>
+                          <td style="text-align:center;">{{$dp->nama_jenis}}</td>
+                          <td style="text-align:center;">{{$dp->kuantitas}}</td>
+                          <td style="text-align:center;">{{$dp->nama_ruang}}</td>
+                          <td style="text-align:center;">{{$dp->nama_admin}}</td>
+                          <td style="text-align:center;">{{$dp->status_pengembalian}}</td>
+                          <td style="text-align:center;">
+                            <a href="/{{$dp->id_peminjaman}}/formkembalian"><button class="btn btn-danger btn-sm">Kembalikan</button></a>
+                          </td>
                         </tr>
-                      </tbody> -->
-                    </table>
+                          @endforeach
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </section>
       <!-- END DAFTAR PEMINJAM -->
 
     </section>
     <!-- END MAIN CONTENT -->
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('#example1').dataTable();
+      });
+    </script>
+
 @endsection

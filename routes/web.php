@@ -11,17 +11,28 @@
 |
 */
 
-Route::get('/', function () {
-    return view('login');
+Route::get('/ulogin', function () {
+    return view('user.ulogin');
 });
-// UNIVERSAL
-// END UNIVERSAL
 
 // ADMIN CONTROLLER
 Route::get('/admin', 'AdminController@index');
 Route::get('/formpinjam', 'AdminController@formpinjam');
+Route::post('/formpinjam/pinjambarang', 'AdminController@prosespinjam');
+
+Route::get('/{id_peminjaman}/formkembalian', 'AdminController@formkembalian');
+
+Route::get('/daftarbarang', 'AdminController@daftarbarang');
+Route::post('/daftarbarang/tambahbarang', 'AdminController@tambah_barang');
 // END CONTROLLER
 
 // USER CONTROLLER
 Route::get('user', 'UserController@index');
 Route::get('/formpinjamuser', 'UserController@formpinjamuser');
+Route::post('/formpinjamuser/pinjambarang', 'UserController@prosespinjamuser');
+
+Route::get('/uregistrasi', 'UserController@registrasi');
+Route::post('registrasi/registrasipost', 'UserController@registrasipost');
+
+Route::post('/loginpost', 'UserController@loginpost');
+Route::get('/logout', 'UserController@logoutuser')->name('user.logout');

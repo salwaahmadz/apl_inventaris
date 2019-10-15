@@ -32,6 +32,9 @@
   <link rel="stylesheet" href="/assets/dist/css/skins/_all-skins.min.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="/assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/assets/select2.min.css">
+  <script src="/assets/bower_components/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="/assets/select2.min.js"></script>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -115,7 +118,8 @@
 <!-- END CONTENT WRAPPER -->
 
 <!-- jQuery 3 -->
-<script src="/assets/bower_components/jquery/dist/jquery.min.js"></script>
+
+
 <!-- jQuery UI 1.11.4 -->
 <script src="/assets/bower_components/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -154,5 +158,7 @@
 <!-- DataTables -->
 <script src="/assets/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="/assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+
 </body>
 </html>

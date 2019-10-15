@@ -25,7 +25,7 @@
   <![endif]-->
 
   <!-- Google Font -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"> -->
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
@@ -33,17 +33,30 @@
   <!-- FORM LOGIN -->
     <div class="login-box-body">
       <div class="login-logo">
-        <a href="../../index.html"><b>INVENTARIS</b>App</a>
+        <b>INVENTARIS</b>App
       </div>
     <p class="login-box-msg">Sign in to start your session</p>
 
-    <form action="#" method="post">
+@if(session('sukses'))
+<div class="alert alert-success" role="alert">
+ {{session('sukses')}}
+</div>
+@endif
+
+@if(session('gagal'))
+<div class="alert alert-danger" role="alert">
+ {{session('gagal')}}
+</div>
+@endif
+
+    <form action="{{ url('/loginpost') }}" method="post">
+      {{csrf_field()}}
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email">
+        <input type="text" class="form-control" placeholder="Username" name="username">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password">
+        <input type="password" class="form-control" placeholder="Password" name="password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
@@ -54,6 +67,7 @@
         <!-- /.col -->
       </div>
     </form>
+      <a href="/registrasi"><button class="btn btn-warning btn-block btn-flat" style="margin-top: 2%">Sign Up</button></a>
   </div>
   <!-- /.login-box-body -->
 </div>
