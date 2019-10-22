@@ -24,6 +24,9 @@ Route::get('/{id_peminjaman}/formkembalian', 'AdminController@formkembalian');
 
 Route::get('/daftarbarang', 'AdminController@daftarbarang');
 Route::post('/daftarbarang/tambahbarang', 'AdminController@tambah_barang');
+
+Route::get('/daftarjenis', 'AdminController@daftarjenis');
+Route::post('daftarjenis/tambahjenis', 'AdminController@tambah_jenis');
 // END CONTROLLER
 
 // USER CONTROLLER

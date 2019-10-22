@@ -41,7 +41,7 @@
 
         <!-- DAFTAR JENIS BARANG -->
         <li>
-          <a href="#">
+          <a href="/daftarjenis">
             <i class="fa fa-cube"></i> <span>Daftar Jenis Barang</span>
           </a>
         </li>

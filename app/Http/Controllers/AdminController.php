@@ -63,7 +63,7 @@ class AdminController extends Controller
 	// PROSES PINJAM
 	public function prosespinjam(Request $request)
 	{
-		DB::table('peminjaman')
+		$pjm = DB::table('peminjaman')
 			->insert([
 				'id_user'				=> $request->pilihuser,
 				'id_kelas'				=> $request->pilihkelas,
@@ -76,11 +76,10 @@ class AdminController extends Controller
 				'status_pengembalian'	=> $request->status_pengembalian
 					]);
 
-		$qty = DB::table('peminjaman')->where('kuantitas');
-
-		$stokbarang = DB::where('id_inventaris')->decrement('stok_barang');
-
-		$stokbarang = $stokbarang->$stok_barang - $qty;
+		$stk = DB::table('inventaris')
+			->update([
+				'stok_barang'			=> $request->stok_barang
+			]);
 
 
 
@@ -128,17 +127,40 @@ class AdminController extends Controller
 
 	public function tambah_barang(Request $request)
 	{
-		DB::table('inventaris')->insert([
-			'nama_barang'	=> $request->nbarang,
-			'id_jenis'		=> $request->jbarang,
-			'kondisi'		=> $request->kondisi_barang,
-			'kuantitas'		=> $request->kuantitas_barang
-		]);
+		DB::table('inventaris')
+			->insert([
+				'nama_barang'	=> $request->nbarang,
+				'id_jenis'		=> $request->jbarang,
+				'kondisi'		=> $request->kondisi_barang,
+				'kuantitas'		=> $request->kuantitas_barang
+					]);
 
 		return redirect('/daftarbarang')->with('sukses', "Berhasil mendaftarkan barang!");
 	}
 
 	// END TAMBAH BARANG
+
+	// DAFTAR JENIS
+	public function daftarjenis(Request $request){
+		$daftar_jenis = DB::table('jenis')
+		->select('jenis.*')
+		->get();
+
+		return view('admin.vdaftarjenis', ['daftar_jenis' => $daftar_jenis]);
+	}
+	// END DAFTAR JENIS
+
+	// TAMBAH JENIS
+	public function tambah_jenis(Request $request){
+		DB::table('jenis')
+			->insert([
+				'nama_jenis'	=> $request->njenis,
+				'kondisi'		=> $request->kondisibarang
+			]);
+		return redirect('/daftarjenis')->with('sukses', "Berhasil mendaftarkan jenis barang!");
+	}
+	// END TAMBAH JENIS
+
 
 	// LOGIN POST
 

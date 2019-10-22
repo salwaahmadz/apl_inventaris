@@ -113,32 +113,16 @@
             </div>
 
             <div class="modal-body">
-              <form action="/daftarbarang/tambahbarang" method="POST">
+              <form action="/daftarjenis/tambahjenis" method="POST">
                 {{ csrf_field() }}
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Nama Barang</label>
-                  <input name ="nbarang" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Nama Barang">
+                  <label for="exampleInputEmail1">Nama Jenis</label>
+                  <input name ="njenis" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Nama Jenis">
                 </div>
 
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Jenis Barang</label>
-                  <div>
-                    <select id="select2row" style="width:25%" name="jbarang">
-                      @foreach($pilihjenis as $pj)
-                      <option value="{{$pj->id_jenis}}">{{$pj->nama_jenis}}</option>
-                      @endforeach
-                    </select>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                 <label for="exampleInputEmail1">Kondisi Barang</label>
-                 <input name ="kondisi_barang" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Kondisi Barang">
-               </div>
-
-               <div class="form-group">
-                 <label for="exampleInputEmail1">Kuantitas Barang</label>
-                 <input name ="kuantitas_barang" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Kuantitas Barang">
+                 <label for="exampleInputEmail1">Kondisi</label>
+                 <input name ="kondisibarang" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Kondisi Barang">
                </div>
 
                <div class="modal-footer">
@@ -168,24 +152,18 @@
                       <table id="example1" class="table table-bordered table-striped">
                         <thead>
                           <tr>
-                            <th style="text-align: center;">ID Inventaris</th>
-                            <th style="text-align:center;">Nama Barang</th>
-                            <th style="text-align:center;">Jenis Barang</th>
+                            <th style="text-align: center;">ID Jenis</th>
+                            <th style="text-align:center;">Nama Jenis</th>
                             <th style="text-align:center;">Kondisi</th>
-                            <th style="text-align:center;">Kuantitas</th>
-                            <th style="text-align:center;">Waktu Register</th>
                           </tr>
                         </thead>
 
                         <tbody>
-                        @foreach($daftar_barang as $db)
+                        @foreach($daftar_jenis as $dj)
                         <tr>
-                          <td>{{$db->id_inventaris}}</td>
-                          <td>{{$db->nama_barang}}</td>
-                          <td>{{$db->nama_jenis}}</td>
-                          <td>{{$db->kondisi}}</td>
-                          <td>{{$db->stok_barang}}</td>
-                          <td>{{$db->waktu_register}}</td>
+                          <td>{{$dj->id_jenis}}</td>
+                          <td>{{$dj->nama_jenis}}</td>
+                          <td>{{$dj->kondisi}}</td>
                         </tr>
                         @endforeach
                         </tbody>
