@@ -18,7 +18,7 @@ class DaftarBarang extends Migration
             $table->string('nama_barang');
             $table->string('id_jenis');
             $table->string('kondisi');
-            $table->string('kuantitas');
+            $table->integer('stok_barang');
             $table->timestamps();
         });
     }

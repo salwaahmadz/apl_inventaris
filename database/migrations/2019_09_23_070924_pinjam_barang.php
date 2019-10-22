@@ -21,7 +21,7 @@ class PinjamBarang extends Migration
             $table->string('id_jurusan');
             $table->string('id_inventaris');
             $table->string('id_jenis');
-            $table->string('kuantitas');
+            $table->integer('kuantitas');
             $table->string('id_ruang');
             $table->string('id_admin');
         });

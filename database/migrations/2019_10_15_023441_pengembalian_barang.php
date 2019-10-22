@@ -14,7 +14,7 @@ class PengembalianBarang extends Migration
     public function up()
     {
         Schema::create('pengembalian', function(Blueprint $table){
-            $table->increments('id_peminjaman');
+            $table->string('id_peminjaman');
             $table->string('id_user');
             $table->string('id_inventaris');
             $table->timestamps();

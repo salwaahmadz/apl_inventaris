@@ -79,7 +79,7 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
+        <li class="active">Form Pengembalian</li>
       </ol>
     </section>
 
@@ -108,14 +108,14 @@
                 <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label">Nama Peminjam</label>
                   <div class="col-sm-10">
-                    <input style="width:25%" name="iduser" disabled="">
+                    <input style="width:25%" name="iduser" disabled="" value="{{$pengembalian->id_user}}">
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label">Barang Yang Dipinjam</label>
                   <div class="col-sm-10">
-                    <input style="width: 25%" name="idinventaris" disabled="">
+                    <input style="width: 25%" name="idinventaris" disabled="" value="{{$pengembalian->id_inventaris}}">
                   </div>
                 </div>                
                 

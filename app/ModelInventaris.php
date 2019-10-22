@@ -11,6 +11,6 @@ class ModelInventaris extends Model
     protected $primarykey = 'id_inventaris';
 
     protected $fillable = [
-    	'id_inventaris', 'nama_barang', 'id_jenis', 'kondisi', 'kuantitas', 'waktu_register'
+    	'id_inventaris', 'nama_barang', 'id_jenis', 'kondisi', 'stok_barang', 'waktu_register'
     ];
 }

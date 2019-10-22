@@ -27,7 +27,7 @@ Route::post('/daftarbarang/tambahbarang', 'AdminController@tambah_barang');
 // END CONTROLLER
 
 // USER CONTROLLER
-Route::get('user', 'UserController@index');
+Route::get('/user', 'UserController@index');
 Route::get('/formpinjamuser', 'UserController@formpinjamuser');
 Route::post('/formpinjamuser/pinjambarang', 'UserController@prosespinjamuser');
 

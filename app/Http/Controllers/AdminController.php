@@ -63,17 +63,27 @@ class AdminController extends Controller
 	// PROSES PINJAM
 	public function prosespinjam(Request $request)
 	{
-		DB::table('peminjaman')->insert([
-			'id_user'				=> $request->pilihuser,
-			'id_kelas'				=> $request->pilihkelas,
-			'id_jurusan'			=> $request->pilihjurusan,
-			'id_inventaris'			=> $request->pilihbarang,
-			'id_jenis'				=> $request->pilihjenis,
-			'kuantitas'				=> $request->kuantitas,
-			'id_ruang'				=> $request->pilihruang,
-			'id_admin'				=> $request->pilihpetugas,
-			'status_pengembalian'	=> $request->status_pengembalian
-		]);
+		DB::table('peminjaman')
+			->insert([
+				'id_user'				=> $request->pilihuser,
+				'id_kelas'				=> $request->pilihkelas,
+				'id_jurusan'			=> $request->pilihjurusan,
+				'id_inventaris'			=> $request->pilihbarang,
+				'id_jenis'				=> $request->pilihjenis,
+				'kuantitas'				=> $request->kuantitas,
+				'id_ruang'				=> $request->pilihruang,
+				'id_admin'				=> $request->pilihpetugas,
+				'status_pengembalian'	=> $request->status_pengembalian
+					]);
+
+		$qty = DB::table('peminjaman')->where('kuantitas');
+
+		$stokbarang = DB::where('id_inventaris')->decrement('stok_barang');
+
+		$stokbarang = $stokbarang->$stok_barang - $qty;
+
+
+
 
 		return redirect('/admin')->with('sukses', "Proses peminjaman berhasil!");
 	}
@@ -82,16 +92,21 @@ class AdminController extends Controller
 	//FORM KEMBALIAN
 	public function formkembalian($id_peminjaman)
 	{
-		$pengembalian 	= ModelPinjam::find($id_peminjaman);
-		// $pilihuser		= ModelUser::all();
-		// $pilihbarang	= ModelInventaris::all();
-		// $id_pengembalian = \App\ 
-		return view('admin.vkembalian', 
-			[
-			// 'pilihuser'	=> $pilihuser,
-			// 'pilihbarang'	=> $pilihbarang,
-			'pengembalian' => $pengembalian
-			]);
+
+		// $pengembalian = DB::table('peminjaman')->where('id_peminjaman', $id_peminjaman)->get();
+		// return view ('admin.vkembalian', ['pengembalian' => $pengembalian]);
+
+
+		// $pengembalian 		= ModelPinjam::find($id_peminjaman);
+		// // $pilihuser		= ModelUser::all();
+		// // $pilihbarang		= ModelInventaris::all();
+		// // $id_pengembalian = \App\ 
+		// return view('admin/formkembalian', 
+		// 	[
+		// 	// 'pilihuser'		=> $pilihuser,
+		// 	// 'pilihbarang'	=> $pilihbarang,
+		// 	'pengembalian' => $pengembalian
+		// 	]);
 	}
 	//END FORM KEMBALIAN
 
