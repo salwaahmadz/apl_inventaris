@@ -57,7 +57,7 @@
 
         <!-- DAFTAR PENGGUNA -->
         <li>
-          <a href="#">
+          <a href="/daftaruser">
             <i class="fa fa-users"></i> <span>Daftar Pengguna</span>
           </a>
         </li>

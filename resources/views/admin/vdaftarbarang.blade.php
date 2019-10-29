@@ -56,7 +56,7 @@
 
         <!-- DAFTAR PENGGUNA -->
         <li>
-          <a href="#">
+          <a href="/daftaruser">
             <i class="fa fa-users"></i> <span>Daftar Pengguna</span>
           </a>
         </li>
@@ -164,7 +164,7 @@
                       <h3><b>Data Barang</b></h3>
                     </div>
 
-                    <div class="box-body">
+                    <div class="box-body" style="overflow-x: auto;">
                       <table id="example1" class="table table-bordered table-striped">
                         <thead>
                           <tr>
@@ -173,7 +173,9 @@
                             <th style="text-align:center;">Jenis Barang</th>
                             <th style="text-align:center;">Kondisi</th>
                             <th style="text-align:center;">Kuantitas</th>
+                            <th style="text-align:center;" colspan="2">Action</th>
                             <th style="text-align:center;">Waktu Register</th>
+
                           </tr>
                         </thead>
 
@@ -185,6 +187,12 @@
                           <td>{{$db->nama_jenis}}</td>
                           <td>{{$db->kondisi}}</td>
                           <td>{{$db->stok_barang}}</td>
+                          <td>
+                            <a href="#" class="btn btn-warning btn-sm">Update</a>
+                          </td>
+                          <td>
+                            <a href="#" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data?')">Delete</a>
+                          </td>
                           <td>{{$db->waktu_register}}</td>
                         </tr>
                         @endforeach
