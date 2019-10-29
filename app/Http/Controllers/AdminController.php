@@ -13,6 +13,9 @@ use App\ModelJenis;
 use App\ModelRuang;
 use App\ModelAdmin;
 use App\ModelLevel;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Contracts\Encryption\DecryptException;
 
 class AdminController extends Controller
 {
@@ -63,7 +66,7 @@ class AdminController extends Controller
 	// PROSES PINJAM
 	public function prosespinjam(Request $request)
 	{
-		$pjm = DB::table('peminjaman')
+		DB::table('peminjaman')
 			->insert([
 				'id_user'				=> $request->pilihuser,
 				'id_kelas'				=> $request->pilihkelas,
@@ -73,19 +76,12 @@ class AdminController extends Controller
 				'kuantitas'				=> $request->kuantitas,
 				'id_ruang'				=> $request->pilihruang,
 				'id_admin'				=> $request->pilihpetugas,
-				'status_pengembalian'	=> $request->status_pengembalian
+				'status'				=> $request->status
 					]);
-
-		$stk = DB::table('inventaris')
-			->update([
-				'stok_barang'			=> $request->stok_barang
-			]);
-
-
-
-
 		return redirect('/admin')->with('sukses', "Proses peminjaman berhasil!");
-	}
+	
+			}
+
 	// END PROSES PINJAM
 
 	//FORM KEMBALIAN
@@ -161,6 +157,67 @@ class AdminController extends Controller
 	}
 	// END TAMBAH JENIS
 
+	// DAFTAR RUANGAN
+	public function daftarruang(Request $request){
+		$daftar_ruang = DB::table('ruang')
+		->select('ruang.*')
+		->get();
+
+		return view('admin.vdaftarruang', ['daftar_ruang' => $daftar_ruang]);
+	}
+	// END DAFTAR RUANGAN
+
+	// TAMBAH RUANGAN
+	public function tambah_ruang(Request $request){
+		DB::table('ruang')
+			->insert([
+				'nama_ruang'	=> $request->nruangan
+			]);
+		return redirect('/daftarruang')->with('sukses', "Berhasil mendaftarkan ruangan baru!");
+	}
+	// TAMBAH RUANGAN
+
+	// DAFTAR USER
+	public function daftaruser(Request $request){
+		$daftar_user = DB::table('user')
+		->join('kelas', 'kelas.id_kelas', '=', 'user.id_kelas')
+		->join('jurusan', 'jurusan.id_jurusan', '=','user.id_jurusan')
+		->select('user.*', 'kelas.tingkat_kelas', 'jurusan.nama_jurusan')
+		->get();
+		$pilihkelas = ModelKelas::all();
+		$pilihjurusan = ModelJurusan::all();
+
+		return view('admin.vdaftaruser', 
+			[
+				'daftar_user'	=> $daftar_user, 
+				'pilihkelas'	=> $pilihkelas, 
+				'pilihjurusan'	=> $pilihjurusan]);
+	}
+	// END DAFTAR USER
+
+	// TAMBAH USER
+	public function tambah_user(Request $request){
+		$this->validate($request,[
+		'namauser'      => 'required',
+        'kelas'         => 'required',
+        'jurusan'       => 'required',
+        'username'      => 'required',
+        'password'      => 'required',
+        'confirmation'  => 'required|same:password',
+    ]);
+
+    $data =  new ModelUser();
+    $data->nama_user = $request->namauser;
+    $data->id_kelas = $request->kelas;
+    $data->id_jurusan = $request->jurusan;
+    $data->username = $request->username;
+    $data->password = bcrypt($request->password);
+    $data->id_level = $request->level;
+    $data->save();
+
+    return redirect('/daftaruser')->with('sukses','Berhasil Menambahkan Pengguna Baru');
+	}
+	// END TAMBAH USER
 
 	// LOGIN POST
 

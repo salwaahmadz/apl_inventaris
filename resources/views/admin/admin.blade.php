@@ -49,7 +49,7 @@
 
         <!-- DAFTAR RUANGAN -->
         <li>
-          <a href="#">
+          <a href="/daftarruang">
             <i class="fa fa-th"></i> <span>Daftar Ruangan</span>
           </a>
         </li>
@@ -172,7 +172,7 @@
                             <th style="text-align:center;">Kuantitas</th>
                             <th style="text-align:center;">Ruangan</th>
                             <th style="text-align:center;">Nama Petugas</th>
-                            <th style="text-align:center;">Status Pengembalian</th>
+                            <th style="text-align:center;">Status</th>
                             <th style="text-align:center;">Action</th>
                           </tr>
                         </thead>
@@ -190,7 +190,7 @@
                           <td style="text-align:center;">{{$dp->kuantitas}}</td>
                           <td style="text-align:center;">{{$dp->nama_ruang}}</td>
                           <td style="text-align:center;">{{$dp->nama_admin}}</td>
-                          <td style="text-align:center;">{{$dp->status_pengembalian}}</td>
+                          <td style="text-align:center;">{{$dp->status}}</td>
                           <td style="text-align:center;">
                             <a href="/{{$dp->id_peminjaman}}/formkembalian"><button class="btn btn-danger btn-sm">Kembalikan</button></a>
                           </td>

@@ -22,8 +22,8 @@ class UserController extends Controller
 {
     public function index()
     {
-    	if (!Session::get('ulogin')){
-    		return redirect('ulogin')->with('gagal', "Anda Harus Login terlebih dahulu!");
+    	if (!Session::get('nama_user')){
+    		return redirect('/ulogin')->with('gagal', "Anda Harus Login terlebih dahulu!");
     	}else{
     		return view('user.user');
     	}
@@ -109,6 +109,13 @@ class UserController extends Controller
 	}
 	// END REGISTRASI
 
+	// 
+	public function login()
+	{
+    return view('login');
+	}
+	// 
+	
 	// LOGIN POST
 
 	public function loginpost(Request $request)

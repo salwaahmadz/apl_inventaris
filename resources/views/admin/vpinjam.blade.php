@@ -198,9 +198,7 @@
                 <div class="form-group" hidden="">
                   <label for="inputPassword3" class="col-sm-2 control-label">Status</label>
                   <div class="col-sm-10">
-                    <select class="pilihdata" style="width: 25%" name="status_pengembalian">
-                    <option value="1"></option>
-                    </select>
+                    <input type="number" name="status" style="width: 25%" value="1">
                   </div>
                 </div>
                 

@@ -31,7 +31,7 @@
         <!-- END DASHBOARD -->
 
         <!-- DAFTAR BARANG -->
-        <li class="active treeview">
+        <li>
           <a href="/daftarbarang">
             <i class="fa fa-cubes"></i><span>Daftar Barang</span>
           </a>
@@ -39,7 +39,7 @@
         <!-- END DAFTAR BARANG -->
 
         <!-- DAFTAR JENIS BARANG -->
-        <li>
+        <li class="active treeview">
           <a href="/daftarjenis">
             <i class="fa fa-cube"></i> <span>Daftar Jenis Barang</span>
           </a>
@@ -48,7 +48,7 @@
 
         <!-- DAFTAR RUANGAN -->
         <li>
-          <a href="#">
+          <a href="/daftarruang">
             <i class="fa fa-th"></i> <span>Daftar Ruangan</span>
           </a>
         </li>
@@ -92,14 +92,14 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="/admin"><i class="fa fa-cubes"></i> Home</a></li>
-        <li class="active">Daftar Barang</li>
+        <li class="active">Daftar Jenis Barang</li>
       </ol>
     </section>
 
     <section class="content-header">
   		<!-- Modal Button Trigger -->
   	<button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#exampleModal">
-  Tambah Barang</button>
+  Tambah Jenis Barang</button>
   		<!-- End Modal Trigger -->
 	</section>
 
@@ -109,7 +109,7 @@
           <div class="modal-content">
             
             <div class="modal-header">
-              <h3 class="modal-title" id="exampleModalLabel">Tambah Barang Baru</h3>
+              <h3 class="modal-title" id="exampleModalLabel">Tambah Jenis Baru</h3>
             </div>
 
             <div class="modal-body">

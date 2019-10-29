@@ -31,7 +31,7 @@
         <!-- END DASHBOARD -->
 
         <!-- DAFTAR BARANG -->
-        <li class="active treeview">
+        <li>
           <a href="/daftarbarang">
             <i class="fa fa-cubes"></i><span>Daftar Barang</span>
           </a>
@@ -47,7 +47,7 @@
         <!-- END DAFTAR JENIS BARANG -->
 
         <!-- DAFTAR RUANGAN -->
-        <li>
+        <li class="active treeview">
           <a href="/daftarruang">
             <i class="fa fa-th"></i> <span>Daftar Ruangan</span>
           </a>
@@ -56,7 +56,7 @@
 
         <!-- DAFTAR PENGGUNA -->
         <li>
-          <a href="#">
+          <a href="/daftaruser">
             <i class="fa fa-users"></i> <span>Daftar Pengguna</span>
           </a>
         </li>
@@ -92,14 +92,14 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="/admin"><i class="fa fa-cubes"></i> Home</a></li>
-        <li class="active">Daftar Barang</li>
+        <li class="active">Daftar Ruangan</li>
       </ol>
     </section>
 
     <section class="content-header">
   		<!-- Modal Button Trigger -->
   	<button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#exampleModal">
-  Tambah Barang</button>
+  Tambah Ruangan</button>
   		<!-- End Modal Trigger -->
 	</section>
 
@@ -109,37 +109,16 @@
           <div class="modal-content">
             
             <div class="modal-header">
-              <h3 class="modal-title" id="exampleModalLabel">Tambah Barang Baru</h3>
+              <h3 class="modal-title" id="exampleModalLabel">Tambah Ruangan Baru</h3>
             </div>
 
             <div class="modal-body">
-              <form action="/daftarbarang/tambahbarang" method="POST">
+              <form action="/daftarruang/tambahruang" method="POST">
                 {{ csrf_field() }}
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Nama Barang</label>
-                  <input name ="nbarang" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Nama Barang">
+                  <label for="exampleInputEmail1">Nama Ruangan</label>
+                  <input name ="nruangan" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Nama Ruangan">
                 </div>
-
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Jenis Barang</label>
-                  <div>
-                    <select id="select2row" style="width:25%" name="jbarang">
-                      @foreach($pilihjenis as $pj)
-                      <option value="{{$pj->id_jenis}}">{{$pj->nama_jenis}}</option>
-                      @endforeach
-                    </select>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                 <label for="exampleInputEmail1">Kondisi Barang</label>
-                 <input name ="kondisi_barang" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Kondisi Barang">
-               </div>
-
-               <div class="form-group">
-                 <label for="exampleInputEmail1">Kuantitas Barang</label>
-                 <input name ="kuantitas_barang" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Kuantitas Barang">
-               </div>
 
                <div class="modal-footer">
                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -155,37 +134,29 @@
 
 
 
-        <!-- DAFTAR BARANG -->
+        <!-- DAFTAR RUANGAN -->
             <section class="content">
               <div class="row">
                 <div class="col-sm-12">
                   <div class="box">
                     <div class="box-header">
-                      <h3><b>Data Barang</b></h3>
+                      <h3><b>Data Ruangan</b></h3>
                     </div>
 
                     <div class="box-body">
                       <table id="example1" class="table table-bordered table-striped">
                         <thead>
                           <tr>
-                            <th style="text-align: center;">ID Inventaris</th>
-                            <th style="text-align:center;">Nama Barang</th>
-                            <th style="text-align:center;">Jenis Barang</th>
-                            <th style="text-align:center;">Kondisi</th>
-                            <th style="text-align:center;">Kuantitas</th>
-                            <th style="text-align:center;">Waktu Register</th>
+                            <th style="text-align: center;">ID Ruangan</th>
+                            <th style="text-align:center;">Nama Ruangan</th>
                           </tr>
                         </thead>
 
                         <tbody>
-                        @foreach($daftar_barang as $db)
+                        @foreach($daftar_ruang as $dr)
                         <tr>
-                          <td>{{$db->id_inventaris}}</td>
-                          <td>{{$db->nama_barang}}</td>
-                          <td>{{$db->nama_jenis}}</td>
-                          <td>{{$db->kondisi}}</td>
-                          <td>{{$db->stok_barang}}</td>
-                          <td>{{$db->waktu_register}}</td>
+                          <td>{{$dr->id_ruang}}</td>
+                          <td>{{$dr->nama_ruang}}</td>
                         </tr>
                         @endforeach
                         </tbody>
@@ -195,7 +166,7 @@
                 </div>
               </div>
             </section>
-      <!-- END DAFTAR BARANG -->
+      <!-- END DAFTAR RUANGAN -->
 
     <script type="text/javascript">
       $(document).ready(function(){

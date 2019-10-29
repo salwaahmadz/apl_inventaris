@@ -27,6 +27,12 @@ Route::post('/daftarbarang/tambahbarang', 'AdminController@tambah_barang');
 
 Route::get('/daftarjenis', 'AdminController@daftarjenis');
 Route::post('daftarjenis/tambahjenis', 'AdminController@tambah_jenis');
+
+Route::get('/daftarruang', 'AdminController@daftarruang');
+Route::post('/daftarruang/tambahruang', 'AdminController@tambah_ruang');
+
+Route::get('/daftaruser', 'AdminController@daftaruser');
+Route::post('/daftaruser/tambahuser', 'AdminController@tambah_user');
 // END CONTROLLER
 
 // USER CONTROLLER
