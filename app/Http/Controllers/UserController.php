@@ -22,7 +22,7 @@ class UserController extends Controller
 {
     public function index()
     {
-    	if (!Session::get('nama_user')){
+    	if (!Session::get('ulogin')){
     		return redirect('/ulogin')->with('gagal', "Anda Harus Login terlebih dahulu!");
     	}else{
     		return view('user.user');
@@ -56,15 +56,21 @@ class UserController extends Controller
 	// PROSES PINJAM
 	public function prosespinjamuser(Request $request)
 	{
+		if ($request->kuantitas <= 0) {
+			return redirect('/formpinjamuser')->with('gagal', "Jumlah barang minimal 1");
+		}else{
+			$kuantitas = $request->kuantitas;
+		};
 		DB::table('peminjaman')->insert([
-			'id_user'		=> $request->pilihuser,
-			'id_kelas'		=> $request->pilihkelas,
-			'id_jurusan'	=> $request->pilihjurusan,
+			'id_user'		=> Session::get('id_user'),
+			'id_kelas'		=> Session::get('id_kelas'),
+			'id_jurusan'	=> Session::get('id_jurusan'),
 			'id_inventaris'	=> $request->pilihbarang,
 			'id_jenis'		=> $request->pilihjenis,
-			'kuantitas'		=> $request->kuantitas,
+			'kuantitas'		=> $kuantitas,
 			'id_ruang'		=> $request->pilihruang,
-			'id_admin'		=> $request->pilihpetugas
+			'id_admin'		=> $request->pilihpetugas,
+			'status'		=> $request->status
 		]);
 
 		return redirect('/user')->with('sukses', "Proses peminjaman berhasil!");
@@ -122,19 +128,29 @@ class UserController extends Controller
 	{
 		$username		= $request->username;
 		$password		= $request->password;
-		$proseslogin	= ModelUser::where('username', $username)->first();
+		$proseslogin	= ModelUser::where('username', $username)
+		->join('kelas', 'kelas.id_kelas', '=', 'user.id_kelas')
+		->join('jurusan', 'jurusan.id_jurusan', '=','user.id_jurusan')
+		->select('user.*' ,'kelas.tingkat_kelas', 'jurusan.nama_jurusan')
+		->first();
 		// dd($proseslogin);
 		if($proseslogin){
         if(Hash::check($password,		$proseslogin->password)){
-            Session::put('nama_user',	$proseslogin->namauser);
+            Session::put('namauser',	$proseslogin->nama_user);
             Session::put('username',	$proseslogin->username);
-            Session::put('user.ulogin', TRUE);
+            Session::put('kelas',		$proseslogin->tingkat_kelas);
+            Session::put('jurusan',		$proseslogin->nama_jurusan);
+
+            Session::put('id_user',		$proseslogin->id_user);
+            Session::put('id_kelas',	$proseslogin->id_kelas);
+            Session::put('id_jurusan',	$proseslogin->id_jurusan);
+            Session::put('ulogin', TRUE);
             return view('user.user');
         }else{
-            return redirect('/ulogin')->with('gagal', "Username atau Password yang anda masukan salah");
+            return redirect('/ulogin')->with('gagal', "Password yang anda masukan salah");
         	}
     	}else{
-            return redirect('/ulogin')->with('gagal', "Username atau Password yang anda masukan salah");
+            return redirect('/ulogin')->with('gagal', "Username dan Password yang anda masukan salah");
         	} 
 	}
 	// END LOGIN POST

@@ -63,7 +63,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../../assets/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">{{Session::get('nama_user')}}</span>
+              <span class="hidden-xs">{{Session::get('namauser')}}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -71,7 +71,7 @@
                 <img src="../../assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  {{Session::get('nama_user')}} - {{Session::get('nama_level')}}
+                  {{Session::get('namauser')}} <br> {{Session::get('kelas')}} {{Session::get('jurusan')}}
                 </p>
               </li>
 
@@ -114,47 +114,6 @@
           </a>
         </li>
         <!-- END DAFTAR BARANG -->
-
-        <!-- DAFTAR JENIS BARANG -->
-        <li>
-          <a href="#">
-            <i class="fa fa-cube"></i> <span>Daftar Jenis Barang</span>
-          </a>
-        </li>
-        <!-- END DAFTAR JENIS BARANG -->
-
-        <!-- DAFTAR RUANGAN -->
-        <li>
-          <a href="#">
-            <i class="fa fa-th"></i> <span>Daftar Ruangan</span>
-          </a>
-        </li>
-        <!-- END DAFTAR RUANGAN -->
-
-        <!-- DAFTAR PENGGUNA -->
-        <li>
-          <a href="#">
-            <i class="fa fa-users"></i> <span>Daftar Pengguna</span>
-          </a>
-        </li>
-        <!-- END DAFTAR PENGGUNA -->
-
-        <!-- DAFTAR PETUGAS -->
-        <li>
-          <a href="#">
-            <i class="fa fa-user"></i> <span>Daftar Petugas</span>
-          </a>
-        </li>
-        <!-- END DAFTAR PETUGAS -->
-
-        <!-- GENERATE REPORT -->
-        <li>
-          <a href="#">
-            <i class="fa fa-files-o"></i> <span>Generate Report</span>
-          </a>
-        </li>
-        <!-- END GENERATE REPORT -->
-
 
     </section>
     <!-- END SIDEBAR -->

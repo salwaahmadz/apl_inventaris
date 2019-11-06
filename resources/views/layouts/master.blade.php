@@ -49,6 +49,7 @@
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
 
+<!-- HEADER -->
   <header class="main-header">
     <!-- Logo -->
     <a href="/admin" class="logo">
@@ -98,6 +99,7 @@
       </div>
     </nav>
   </header>
+<!-- END HEADER -->
 
   <!-- MAIN MENU -->
   <!-- Content Wrapper. Contains page content -->

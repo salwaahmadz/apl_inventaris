@@ -188,7 +188,7 @@
                           <td>{{$db->kondisi}}</td>
                           <td>{{$db->stok_barang}}</td>
                           <td>
-                            <a href="/daftarbarang/editbarang/{{$db->id_inventaris}}" class="btn btn-warning btn-sm">Update</a>
+                            <a href="/daftarbarang/editbarang/{{ $db->id_inventaris }}" class="btn btn-warning btn-sm">Update</a>
                           </td>
                           <td>
                             <a href="/daftarbarang/deletebarang/{{ $db->id_inventaris }}" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus data?')">Delete</a>

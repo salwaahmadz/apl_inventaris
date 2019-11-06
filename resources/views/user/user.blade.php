@@ -42,20 +42,6 @@
           <!-- /.info-box -->
         </div>
         <!-- END PINJAM BARANG -->
-
-        <!-- KEMBALIKAN BARANG -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
-          <div class="info-box">
-            <span class="info-box-icon bg-red"><i class="glyphicon glyphicon-log-in"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text"><strong>KEMBALIKAN BARANG</strong></span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-        </div>
-        <!-- END KEMBALIKAN BARANG -->
         
         <!-- RIWAYAT PEMINJAMAN -->
         <div class="col-md-3 col-sm-6 col-xs-12">

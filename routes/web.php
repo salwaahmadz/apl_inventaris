@@ -22,8 +22,12 @@ Route::post('/formpinjam/pinjambarang', 'AdminController@prosespinjam');
 
 Route::get('/{id_peminjaman}/formkembalian', 'AdminController@formkembalian');
 
-Route::get('/daftarbarang', 'AdminController@daftarbarang');
-Route::post('/daftarbarang/tambahbarang', 'AdminController@tambah_barang');
+// ROUTE BARANG
+Route::get('/daftarbarang', 'BarangController@daftar_barang');
+Route::post('/daftarbarang/tambahbarang', 'BarangController@tambah_barang');
+Route::get('/daftarbarang/editbarang/{id_inventaris}', 'BarangController@edit_barang');
+Route::get('/daftarbarang/deletebarang/{id_inventaris}', 'BarangController@delete_barang');
+// END ROUTE BARANG
 
 Route::get('/daftarjenis', 'AdminController@daftarjenis');
 Route::post('daftarjenis/tambahjenis', 'AdminController@tambah_jenis');

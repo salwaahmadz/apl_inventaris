@@ -106,33 +106,34 @@ class AdminController extends Controller
 	//END FORM KEMBALIAN
 
 	// DAFTAR BARANG
-	public function daftarbarang()
-	{
-		$daftar_barang = DB::table('inventaris')
-		->join('jenis', 'jenis.id_jenis', '=', 'inventaris.id_jenis')
-		->select('inventaris.*', 'jenis.nama_jenis')
-		->get();
-		$pilihjenis = ModelJenis::all();
+	
+	// public function daftarbarang()
+	// {
+	// 	$daftar_barang = DB::table('inventaris')
+	// 	->join('jenis', 'jenis.id_jenis', '=', 'inventaris.id_jenis')
+	// 	->select('inventaris.*', 'jenis.nama_jenis')
+	// 	->get();
+	// 	$pilihjenis = ModelJenis::all();
 
-		// return view('admin.vdaftarbarang', ['pilihjenis' => $pilihjenis]);
-		return view('admin.vdaftarbarang', ['daftar_barang' => $daftar_barang, 'pilihjenis' => $pilihjenis]);
-	}
-	// END DAFTAR BARANG
+	// 	// return view('admin.vdaftarbarang', ['pilihjenis' => $pilihjenis]);
+	// 	return view('admin.vdaftarbarang', ['daftar_barang' => $daftar_barang, 'pilihjenis' => $pilihjenis]);
+	// }
+	// // END DAFTAR BARANG
 
-	// TAMBAH BARANG
+	// // TAMBAH BARANG
 
-	public function tambah_barang(Request $request)
-	{
-		DB::table('inventaris')
-			->insert([
-				'nama_barang'	=> $request->nbarang,
-				'id_jenis'		=> $request->jbarang,
-				'kondisi'		=> $request->kondisi_barang,
-				'kuantitas'		=> $request->kuantitas_barang
-					]);
+	// public function tambah_barang(Request $request)
+	// {
+	// 	DB::table('inventaris')
+	// 		->insert([
+	// 			'nama_barang'	=> $request->nbarang,
+	// 			'id_jenis'		=> $request->jbarang,
+	// 			'kondisi'		=> $request->kondisi_barang,
+	// 			'kuantitas'		=> $request->kuantitas_barang
+	// 				]);
 
-		return redirect('/daftarbarang')->with('sukses', "Berhasil mendaftarkan barang!");
-	}
+	// 	return redirect('/daftarbarang')->with('sukses', "Berhasil mendaftarkan barang!");
+	// }
 
 	// END TAMBAH BARANG
 
@@ -218,6 +219,18 @@ class AdminController extends Controller
     return redirect('/daftaruser')->with('sukses','Berhasil Menambahkan Pengguna Baru');
 	}
 	// END TAMBAH USER
+
+	// // FUNGSI DELETE
+
+	// public function delete_barang($id_inventaris){
+	// 	DB::table('inventaris')
+	// 	->where('id_inventaris', $id_inventaris)
+	// 	->delete();
+
+	// 	return redirect('admin.vdaftarbarang')->with('sukses', "Data Barang berhasil dihapus");
+	// }
+
+	// // END FUNGSI DELETE
 
 	// LOGIN POST
 

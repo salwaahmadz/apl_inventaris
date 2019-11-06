@@ -1,5 +1,17 @@
 @extends('layouts.masteruser')
 @section('content')
+
+@if(session('sukses'))
+<div class="alert alert-success" role="alert">
+ {{session('sukses')}}
+</div>
+@endif
+
+@if(session('gagal'))
+<div class="alert alert-danger" role="alert">
+ {{session('gagal')}}
+</div>
+@endif
 <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -43,33 +55,39 @@
                 <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label">Nama Peminjam</label>
                   <div class="col-sm-10">
-                    <select class="pilihdata" style="width:25%" name="pilihuser">
-                    @foreach($pilihuser as $pu)
-                    <option value="{{$pu->id_user}}">{{$pu->nama_user}}</option>
-                    @endforeach  
-                    </select>
+                    <input type="text" name="nama" disabled="" value="{{Session::get('namauser')}}" style="width: 25%">
+                  </div>
+                </div>
+
+                <div class="form-group" hidden="">
+                  <div class="col-sm-10">
+                    <input type="text" name="iduser" disabled="" value="{{Session::get('id_user')}}" style="width: 25%">
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label">Kelas</label>
                   <div class="col-sm-10">
-                    <select class="pilihdata" style="width:25%" name="pilihkelas">
-                    @foreach($pilihkelas as $pk)
-                    <option value="{{$pk->id_kelas}}">{{$pk->tingkat_kelas}}</option>
-                    @endforeach
-                    </select>
+                    <input type="text" name="kelas" disabled="" value="{{Session::get('kelas')}}" style="width: 25%">
+                  </div>
+                </div>
+
+                <div class="form-group" hidden="">
+                  <div class="col-sm-10">
+                    <input type="text" name="idkelas" disabled="" value="{{Session::get('id_kelas')}}" style="width: 25%">
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label">Jurusan</label>
                   <div class="col-sm-10">
-                    <select class="pilihdata" style="width: 25%" name="pilihjurusan">
-                    @foreach($pilihjurusan as $pj)
-                    <option value="{{$pj->id_jurusan}}">{{$pj->nama_jurusan}}</option>
-                    @endforeach
-                    </select>
+                    <input type="text" name="jurusan" disabled="" value="{{Session::get('jurusan')}}" style="width: 25%">
+                  </div>
+                </div>
+
+                <div class="form-group" hidden="">
+                  <div class="col-sm-10">
+                    <input type="text" name="idjurusan" disabled="" value="{{Session::get('id_jurusan')}}" style="width: 25%">
                   </div>
                 </div>
 
@@ -121,6 +139,12 @@
                     <option value="{{$pp->id_admin}}">{{$pp->nama_admin}}</option>
                     @endforeach
                     </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-sm-10">
+                    <input type="text" name="status" hidden="" value="1" style="width: 25%">
                   </div>
                 </div>
 
