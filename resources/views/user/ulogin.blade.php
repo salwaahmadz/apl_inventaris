@@ -67,7 +67,7 @@
         <!-- /.col -->
       </div>
     </form>
-      <a href="/registrasi"><button class="btn btn-warning btn-block btn-flat" style="margin-top: 2%">Sign Up</button></a>
+      <a href="/uregistrasi"><button class="btn btn-warning btn-block btn-flat" style="margin-top: 2%">Sign Up</button></a>
   </div>
   <!-- /.login-box-body -->
 </div>
